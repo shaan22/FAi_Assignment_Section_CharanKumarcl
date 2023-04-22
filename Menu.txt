@@ -1,0 +1,6 @@
+﻿-----------------Expense Manager--------------------
+To ADD A Movie PRESS ->    N
+TO UPDATE A Movie PRESS -> U
+TO FIND THE Movie PRESS ->  F
+TO DELETE THE Movie PRESS-> D
+
