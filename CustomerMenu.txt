@@ -1,0 +1,6 @@
+﻿-----------------Customer Manager--------------------
+To ADD A Customer PRESS ->    N
+TO UPDATE A Customer PRESS -> U
+TO FIND THE Customer PRESS ->  F
+TO DELETE THE Customer PRESS-> D
+
