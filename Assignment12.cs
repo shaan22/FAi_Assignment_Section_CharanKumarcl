@@ -20,7 +20,7 @@ namespace CharanKumarcl_Assignments_Fai.Entities
         interface ICustomerRepo 
         {
             void AddCustomer(Customer customer);
-            void DeleteCustomer(int id);
+            bool DeleteCustomer(int id);
             void UpdateCustomer(Customer customer);
             Customer FindCustomerById(int id);
         }
@@ -51,7 +51,7 @@ namespace CharanKumarcl_Assignments_Fai.Entities
 
            
 
-            void ICustomerRepo.DeleteCustomer(int id)
+            public bool DeleteCustomer(int id)
             {
                 for(int i = 0; i < size; i++)
                 {
@@ -60,8 +60,12 @@ namespace CharanKumarcl_Assignments_Fai.Entities
                         customers[i].CustomerId = 0;
                         customers[i].CustomerAddress = null;
                         customers[i].CustomerName = null;
+                        return true;
                     }
+                   
                 }
+                return false;
+
             }
 
             public Customer FindCustomerById(int id)
@@ -134,21 +138,23 @@ namespace CharanKumarcl_Assignments_Fai.Entities
                 switch (choice)
                 {
                     case "N":
-                        addingExpenseHelper(); return true;
+                        addingCustomerHelper(); return true;
                     case "U":
-                        updateExpenseHelper();
+                        updateCustomerHelper();
                         return true;
                     case "F":
-                        findingExpenseHelper();
+                        findingCustomerHelper();
                         return true;
-                    case "D": return true;
+                    case "D":
+                        DeleteCustomerHelper();
+                        return true;
 
                     default:
                         return false;
                 }
             }
 
-            private static void findingExpenseHelper()
+            private static void findingCustomerHelper()
             {
 
                 int id = UiConsole.GetNumber("Enter the customer id to find");
@@ -164,7 +170,7 @@ namespace CharanKumarcl_Assignments_Fai.Entities
                 
             }
 
-            private static void updateExpenseHelper()
+            private static void updateCustomerHelper()
             {
                 Customer customerobj = new Customer();
                 customerobj.CustomerId = UiConsole.GetNumber("Enter the Customer Id");
@@ -175,7 +181,7 @@ namespace CharanKumarcl_Assignments_Fai.Entities
                 UiConsole.PrintMessage("Cusomter Updateed SUccessfully");
             }
 
-            private static void addingExpenseHelper()
+            private static void addingCustomerHelper()
             {
                 Customer customerobj = new Customer();
                 customerobj.CustomerId = UiConsole.GetNumber("Enter the Customer Id");
@@ -187,6 +193,18 @@ namespace CharanKumarcl_Assignments_Fai.Entities
                 
             }
 
+            private static void DeleteCustomerHelper()
+            {
+                int id = UiConsole.GetNumber("Enter the customer id to Delete");
+                bool state = customerManager.DeleteCustomer(id);
+                if (state)
+                {
+                    Console.WriteLine(" Customer Deletion successful");
+                }else
+                {
+                    Console.WriteLine("Not Found");
+                }
+            }
             
         }
     }
